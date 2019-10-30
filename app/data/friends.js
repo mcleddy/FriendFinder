@@ -17,31 +17,32 @@ var friends = [
     {
         "name": "Rectangle",
         "photo": "https://g77v3827gg2notadhhw9pew7-wpengine.netdna-ssl.com/wp-content/uploads/2017/10/german-shepherd-dog-1071592_1920-1024x683.jpg",
-        "scores": [ ],
+        "scores": [4, 2, 5, 2, 5, 1, 5, 5, 1, 2],
     },
     {
         "name": "Veronica",
         "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu6j2cvEl0GCeUQasDOUhbnJsWT3PST-Syu9o9Ya1T7Lqfm-Vf&s",
-        "scores": "",
+        "scores": [3, 5, 3, 2, 3, 1, 2, 4, 2, 3],
     },
     {
         "name": "Spoons",
         "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSY2COcALEAqa8agJ0OXnmxgKgOu7Nu1IJlwFXssHYtCUa-60eIXg&s",
-        "scores": "",
+        "scores": [1, 4, 1, 5, 2, 5, 3, 1, 4, 5],
     },
     {
         "name": "Ajax",
         "photo": "https://www.petmd.com/sites/default/files/01New_GoldenRetriever.jpeg",
-        "scores": "",
+        "scores": [4, 3, 4, 3, 3, 1, 2, 4, 3, 5],
     },
     {
         "name": "Mac",
         "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlH-M6vmbtOPSkPW3RA34aLFS47hrkOSgITOkMxeJ3fJPQWe4HbQ&s",
-        "scores": "",
+        "scores": [1, 1, 2, 5, 3, 4, 4, 2, 3, 4],
     },
     {
         "name": "Luna",
         "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt1Qiu3Z4BbiTmLoTSFyq4CEKI1OvxQZyq1L96Msf2BmUxjVY4-g&s",
-        "scores": "",
+        "scores": [5, 4, 5, 1, 5, 1, 4, 5, 1, 1],
     },
-]
+];
+module.exports=friends;

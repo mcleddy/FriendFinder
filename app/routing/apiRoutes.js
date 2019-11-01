@@ -1,10 +1,11 @@
 var friendData = require("../data/friendData.js");
-
+//gets data from friends array
 module.exports = function (app) {
     app.get("/api/friends", function (req, res) {
         res.json(friendData);
     });
 
+    //will run through the survey results and through the data in the friendData.js
     app.post("/api/friends", function (req, res) {
         var bestFriend = req.body;
         bestFriend.routeName = bestFriend.name.replace(/\s+/g, "").toLowerCase();
@@ -34,7 +35,8 @@ module.exports = function (app) {
             if (dum < lowest) {
                 lowest = dum;
             }
-        };
+        }
+
         for (var c = 0; c < friendData.length; c++) {
             if (friendData[c].score === lowest) {
                 var match = friendData[c];

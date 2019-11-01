@@ -165,8 +165,10 @@
     </div>
 
     <script type="text/javascript">
+    //onclick function
         $("#submit").on("click", function (event) {
             event.preventDefault();
+            //turns the user's answers into obejcts
             var bestFriend = {
                 name: $("#matchName").val(),
                 photo: $("#matchPhoto").val(),
@@ -183,6 +185,7 @@
                     $("#Question10").val(),
                 ]
             };
+            //creates a model with the user's new match and the scores
             $.post("/api/friends", bestFriend).then(function(data) {
                 $("#matchPhoto").val(""),
                     $("#matchName").val(""),

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Meet Your Mate</title>
+    <title>Friend Finder</title>
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
         integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -42,7 +42,7 @@
         <br>
         <h3>Question 2</h3>
         <h4>I have a lot of time to groom my new friend.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question2">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -53,7 +53,7 @@
         <br>
         <h3>Question 3</h3>
         <h4>I enjoy a lot of time outdoors.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question3">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -64,7 +64,7 @@
         <br>
         <h3>Question 4</h3>
         <h4>My home has a lot of low shelves and breakable items.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question4">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -75,7 +75,7 @@
         <br>
         <h3>Question 5</h3>
         <h4>I have a lot of time and energy to devote to my new friend.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question5">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -86,7 +86,7 @@
         <br>
         <h3>Question 6</h3>
         <h4>I want a pint-sized pal.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question6">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -97,7 +97,7 @@
         <br>
         <h3>Question 7</h3>
         <h4>I have a lot of patience and enjoy teaching.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question7">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -108,7 +108,7 @@
         <br>
         <h3>Question 8</h3>
         <h4>I want a my friend to guard our home.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question8">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -119,7 +119,7 @@
         <br>
         <h3>Question 9</h3>
         <h4>I want a lazy friend to relax with.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question9">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -130,7 +130,7 @@
         <br>
         <h3>Question 10</h3>
         <h4>It's important that my new friend is gentle with kids and small animals.</h4>
-        <select data-placeholder="" class="chosen-select" id="Question1">
+        <select data-placeholder="" class="chosen-select" id="Question10">
             <option value=""></option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -140,9 +140,68 @@
         </select>
         <br>
         <hr>
-        <br>
         <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         <br>
         <br>
-    </div> 
+        <br>
+    </div>
+
+    <div id="resultsModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        &times;
+                    </button>
+                    <h2 class="modal-title"><strong>Your Best Match</strong></h2>
+                </div>
+
+                <div class="modal-body">
+                    <h2 id="matchName"></h2>
+                    <img id="matchPhoto" src="https://via.placeholder.com/400x400" alt="Placeholder" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            var bestFriend = {
+                name: $("#matchName").val(),
+                photo: $("#matchPhoto").val(),
+                choices: [
+                    $("#Question1").val(),
+                    $("#Question2").val(),
+                    $("#Question3").val(),
+                    $("#Question4").val(),
+                    $("#Question5").val(),
+                    $("#Question6").val(),
+                    $("#Question7").val(),
+                    $("#Question8").val(),
+                    $("#Question9").val(),
+                    $("#Question10").val(),
+                ]
+            };
+            $.post("/api/friends", bestFriend).then(function(data) {
+                $("#matchPhoto").val(""),
+                    $("#matchName").val(""),
+                    $("#Question1").val(),
+                    $("#Question2").val(),
+                    $("#Question3").val(),
+                    $("#Question4").val(),
+                    $("#Question5").val(),
+                    $("#Question6").val(),
+                    $("#Question7").val(),
+                    $("#Question8").val(),
+                    $("#Question9").val(),
+                    $("#Question10").val(),
+
+                    $(".matchName").text(data.matchName);
+                    $("#matchPhoto").attr("src", data.matchPhoto)
+
+                    console.log("#Modal").modal();
+    });
+        });
+    </script>
 </body>

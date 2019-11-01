@@ -1,11 +1,10 @@
 //dependencies
 const express = require("express");
 const path =require("path");
-const bodyParser =require("body-parser");
 
 //create server set up port
 const port=process.env.PORT || 8080;
-const app =express;
+const app =express();
 
 
 app.use(express.urlencoded({ extended: true }));
